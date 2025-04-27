@@ -1,6 +1,6 @@
 from django.db import models
 
-class Address(models.model):
+class Address(models.Model):
     """
     Model representing an address with geographic coordinates.
     """

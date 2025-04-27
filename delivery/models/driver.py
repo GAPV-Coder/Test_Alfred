@@ -1,6 +1,6 @@
 from django.db import models
 
-class Driver(models.model):
+class Driver(models.Model):
     """
     Model representing a driver with it's locations and availability status.
     """
