@@ -7,10 +7,13 @@ class AddressSerializer(serializers.ModelSerializer):
         fields = ['id', 'street', 'city', 'latitude', 'longitude']
         
 class DriverSerializer(serializers.ModelSerializer):
-    location = AddressSerializer()
-    
+    location = AddressSerializer(read_only=True)
+    location_id = serializers.PrimaryKeyRelatedField(
+        queryset=Address.objects.all(), source='location', write_only=True
+    )
     class Meta:
-        fields = ['id', 'name', 'location', 'is_available']
+        model = Driver
+        fields = ['id', 'name', 'location', 'location_id', 'is_available']
         
 class ServiceSerializer(serializers.ModelSerializer):
     pickup_address = AddressSerializer()
