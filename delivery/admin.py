@@ -1,5 +1,5 @@
 from django.contrib import admin
-from delivery.models import Address, Driver, Service
+from .models import Address, Driver, Service
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
