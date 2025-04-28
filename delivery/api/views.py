@@ -22,6 +22,10 @@ class DriverViewSet(viewsets.ModelViewSet):
     serializer_class = DriverSerializer
     permission_classes = [IsAuthenticated]
     
+class ServiceViewSet(viewsets.ModelViewSet):
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer
+    permission_classes = [IsAuthenticated]
 class ServiceRequestView(APIView):
     """
     View to request a new service.
