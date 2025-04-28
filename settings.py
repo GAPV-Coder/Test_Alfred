@@ -41,7 +41,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-ROOT_URLCONF = 'delivery.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
@@ -59,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'delivery.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {

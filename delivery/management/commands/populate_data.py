@@ -11,7 +11,7 @@ class Command(BaseCommand):
             Address.objects.create(
                 street=fake.street_address(),
                 city=fake.city(),
-                lalitude=fake.latitude(),
+                latitude=fake.latitude(),
                 longitude=fake.longitude()
             )
             
