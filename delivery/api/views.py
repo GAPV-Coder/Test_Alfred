@@ -2,8 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, viewsets
 from rest_framework.permissions import IsAuthenticated
-from delivery_services_app.models import Address, Driver, Service
-from delivery_services_app.services.service_manager import ServiceManager
+from delivery.models import Address, Driver, Service
+from delivery.services.service_manager import ServiceManager
 from .serializers import AddressSerializer, DriverSerializer, ServiceSerializer
 
 class AddressViewSet(viewsets.ModelViewSet):

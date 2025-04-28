@@ -1,6 +1,6 @@
 from typing import Optional, Tuple
 from django.db.models import QuerySet
-from delivery_services_app.models import Address, Driver, Service
+from delivery.models import Address, Driver, Service
 from .distance_calculator import DistanceCalculator
 
 class ServiceManager:

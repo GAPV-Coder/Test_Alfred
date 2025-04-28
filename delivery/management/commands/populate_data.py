@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from faker import Faker
-from delivery_services_app import Address, Driver
+from delivery.models import Address, Driver
 
 class Command(BaseCommand):
     help = 'Populating the database with false data'

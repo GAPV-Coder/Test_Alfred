@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from delivery_services_app import Address, Driver, Service
+from delivery.models import Address, Driver, Service
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:

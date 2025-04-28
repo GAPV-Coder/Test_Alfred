@@ -1,3 +1,3 @@
 from .address import Address
-from .driver import Drivers
+from .driver import Driver
 from .service import Service
