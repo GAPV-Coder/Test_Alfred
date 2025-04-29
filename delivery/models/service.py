@@ -17,7 +17,7 @@ class Service(models.Model):
     
     pickup_address = models.ForeignKey('Address', on_delete=models.CASCADE, related_name='services')
     driver = models.ForeignKey('Driver', on_delete=models.SET_NULL, null=True, related_name='services')
-    estimated_arrival_time = models.FloatField(null=True, blank=True)
+    estimated_arrival_time = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
