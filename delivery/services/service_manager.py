@@ -2,6 +2,8 @@ from typing import Optional, Tuple
 from django.db.models import QuerySet
 from delivery.models import Address, Driver, Service
 from .distance_calculator import DistanceCalculator
+from django.utils import timezone
+from datetime import timedelta
 
 class ServiceManager:
     """
@@ -23,7 +25,7 @@ class ServiceManager:
         
         for driver in available_drivers:
             distance = DistanceCalculator.calculate_distance(
-                pickup_address.latitude, pickup_address.logitude,
+                pickup_address.latitude, pickup_address.longitude,
                 driver.location.latitude, driver.location.longitude
             )
             if distance < min_distance:
@@ -44,10 +46,11 @@ class ServiceManager:
             return None, "No drivers are available."
         
         driver, distance, estimated_time = result
+        estimated_arrival = timezone.now() + timedelta(minutes=estimated_time)
         service = Service.objects.create(
             pickup_address=pickup_address,
             driver=driver,
-            estimated_arrival_time=estimated_time,
+            estimated_arrival_time=estimated_arrival,
             status='IN_PROGRESS'
         )
         driver.is_available = False
