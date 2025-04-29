@@ -56,18 +56,19 @@ class ServiceCompleteView(APIView):
     """
     permission_classes = [IsAuthenticated]
     
-    def post(self, request, service_id):
+    def post(self, request, pk):
         try:
-            service = Service.objects.get(id=service_id)
+            service = Service.objects.get(pk=pk)
         except Service.DoesNotExist:
-            return Response({'error': 'Service not found.'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"error": f"Service with id {pk} does not exist."}, status=status.HTTP_404_NOT_FOUND)
         
         if service.status == 'COMPLETED':
-            return Response({'error': 'Service is now complete.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'Service is already completed.'}, status=status.HTTP_400_BAD_REQUEST)
         
         service.status = 'COMPLETED'
-        service.driver.is_available = True
-        service.driver.save()
+        if service.driver:
+            service.driver.is_available = True
+            service.driver.save()
         service.save()
         
         serializer = ServiceSerializer(service)
