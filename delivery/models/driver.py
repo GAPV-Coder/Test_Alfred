@@ -10,6 +10,7 @@ class Driver(models.Model):
     is_available = models.BooleanField(default=True)
     
     class Meta:
+        app_label = "delivery"
         verbose_name = 'Driver'
         verbose_name_plural = 'Drivers'
         

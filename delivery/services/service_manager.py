@@ -10,7 +10,7 @@ class ServiceManager:
     Class to manage the service assignment logic.
     """
     @staticmethod
-    def find_nearest_diver(pickup_address: Address) -> Optional[Tuple[Driver, float, float]]:
+    def find_nearest_driver(pickup_address: Address) -> Optional[Tuple[Driver, float, float]]:
         """
         Find the closest available driver to the pickup address.
         Returns a tuple with (driver, distance, estimated time) or None if there are no drivers.
@@ -41,7 +41,7 @@ class ServiceManager:
         Creates a new service and assigns the nearest driver.
         Returns the created service and an error message if no drivers are available.
         """
-        result = ServiceManager.find_nearest_diver(pickup_address)
+        result = ServiceManager.find_nearest_driver(pickup_address)
         if not result:
             return None, "No drivers are available."
         

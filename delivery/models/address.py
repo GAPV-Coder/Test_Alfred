@@ -11,6 +11,7 @@ class Address(models.Model):
     longitude = models.FloatField()
     
     class Meta:
+        app_label = "delivery"
         verbose_name = "Address"
         verbose_name_plural = "Addresses"
         

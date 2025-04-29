@@ -21,6 +21,7 @@ class Service(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
+        app_label = "delivery"
         verbose_name = 'Service'
         verbose_name_plural = 'Services'
         
